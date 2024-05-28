@@ -6,12 +6,13 @@ import { BiCartAdd } from "react-icons/bi"
 import { CiLocationOn } from "react-icons/ci"
 import LowerHeader from './LowerHeader'
 import { DataContext } from '../DataProvider/DataProvider'
+import {auth} from "../../Utility/firebase"
 
 
 
 const Header = () => {
 
-  const [{basket},dispatch]=useContext(DataContext)
+  const [{user, basket}, dispatch]=useContext(DataContext)
   const totalItem = basket?.reduce((amount, item) => {
   return item.amount + amount;
 }, 0);
@@ -45,7 +46,7 @@ const Header = () => {
               <option value="">All</option>
             </select>
             <input type="text" />
-            <BsSearch size={25} />
+            <BsSearch size={38} />
           </div>
 
           {/* other section */}
@@ -61,13 +62,26 @@ const Header = () => {
               </select>
             </Link>
 
-            <Link to="/">
-              <p>Sign In</p>
-              <span>Account & Lists</span>
+            <Link to={!user && "/auth"}>
+              <div>
+                {user ? (
+                  <>
+                    <p>Hello {user?.email?.split("@")[0]}</p>
+                    <span onClick={() => auth.signOut()}> Sign Out</span>
+                  </>
+                ) : (
+                  <>
+                    <p>Hello, Sign In</p>
+                    <span>Account & Lists</span>
+
+                  </>
+
+                )}
+              </div>
             </Link>
 
             <Link to="/orders">
-              <p>Returns</p>
+              <p>returns</p>
               <span>& Orders</span>
             </Link>
 

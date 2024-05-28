@@ -13,7 +13,7 @@
 } 
 .category a {
     text-decoration: none;
-    color: rgb(35, 35, 35,);
+    color: rgb(35, 35, 35);
 }
 
 .category h2,
@@ -21,17 +21,23 @@
 .category p {
     padding: 5px;
     margin-left: 15px;
+
 }
 .category p {
     font-size: 12px;
     font-weight: bold;
-    color: rgb (9, 132, 209) ;
+    color: rgb(9, 132, 209) ;
+    
 }
 
 .category__container {
     position: relative;
     margin-top: -10%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    max-width: 1600px;
+    gap: 50px;
+    margin-right: auto;
+    margin-left: auto;
     place-items: center;
 }

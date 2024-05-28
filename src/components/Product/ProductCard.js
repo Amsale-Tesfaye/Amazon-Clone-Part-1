@@ -24,8 +24,6 @@ function ProductCard({product,flex,renderDesc,renderAdd}) {
     })
   }
 
- 
-
   return (
     <div
       className={`${classes.card__container} ${flex ? classes.product__flexed : ''}`}>
